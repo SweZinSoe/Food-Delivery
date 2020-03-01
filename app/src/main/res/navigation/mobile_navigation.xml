@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.szs.myfood.ui.township.TownshipFragment"
+        android:label="Choose Township"
+        tools:layout="@layout/fragment_township" >
+        <action
+            android:id="@+id/action_nav_home_to_restaurantFragment"
+            app:destination="@id/restaurantFragment" />
+        <argument
+            android:name="township"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.szs.myfood.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+    <fragment
+        android:id="@+id/getCustomerDetailsFragment"
+        android:name="com.szs.myfood.ui.getCustomerDetails.GetCustomerDetailsFragment"
+        android:label="Your Information"
+        tools:layout="@layout/fragment_get_customer_details" >
+        <action
+            android:id="@+id/action_getCustomerDetailsFragment_to_orderSuccessFragment"
+            app:destination="@id/orderSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/invoiceFragment"
+        android:name="com.szs.myfood.ui.invoice.InvoiceFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_invoice" >
+        <action
+            android:id="@+id/action_invoiceFragment_to_getCustomerDetailsFragment"
+            app:destination="@id/getCustomerDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantFragment"
+        android:name="com.szs.myfood.ui.restaurant.RestaurantFragment"
+        android:label="Choose Restaurant"
+        tools:layout="@layout/fragment_restaurant" >
+        <action
+            android:id="@+id/action_restaurantFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <argument
+            android:name="townshipName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.szs.myfood.ui.menu.MenuFragment"
+        android:label="Menu" >
+        <action
+            android:id="@+id/action_categoryFragment_to_invoiceFragment"
+            app:destination="@id/invoiceFragment" />
+        <argument
+            android:name="restaurantID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSuccessFragment"
+        android:name="com.szs.myfood.ui.orderSuccessOrFail.OrderSuccessFragment"
+        android:label="Order Complete"
+        tools:layout="@layout/fragment_order_success" />
+
+</navigation>
